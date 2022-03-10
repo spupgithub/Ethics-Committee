@@ -6,35 +6,119 @@
     <title>Ethics Review</title>
 </head>
 <body>
- <div align="center"><br>
-  <br>
-  <h2 >Web Clock in JavaScript</h2>
-  <br>
-</div>
-<table bgcolor="lightblues" align=center>
-<tr><td><div id="showClock"></div></td></tr>
-</table>
-<script language="javascript">
-function webClock(){
-var dataobj=new Date()
-var hours=dataobj.getHours()
-var minutes=dataobj.getMinutes()
-var seconds=dataobj.getSeconds()
-if(minutes<=9)
-minutes="0"+minutes
-if(seconds<=9)
-seconds="0"+seconds
-Eclock="<font size='7' color='white' face='Arial black'>"
-+hours+":"+minutes+":"+seconds+"</font>"
-showClock.innerHTML=Eclock;
-setTimeout("webClock()",1000)
+ #clock {
+  font-family: 'Orbitron', sans-serif;
+  color: #66ff99;
+  font-size: 56px;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
-webClock();
-</script>
-    
-    
-    
-    
+    function currentTime() {
+  var date = new Date(); /* creating object of Date class */
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+}
+    function currentTime() {
+  hour = updateTime(hour);
+  min = updateTime(min);
+  sec = updateTime(sec);
+}
+
+function updateTime(k) {
+  if (k < 10) {
+    return "0" + k;
+  }
+  else {
+    return k;
+  }
+}
+             document.getElementById("clock").innerHTML = hour + " : " + min + " : " + sec; /* adding time to the div */
+To start the timer, setTimeout() method is used which takes the function currentTime() as the first argument and the time (in milliseconds) after which you wish to call the function as the second argument. In our case, the function is called after every 1000 milliseconds.
+
+Finally, the currentTime() function is called to initiate the whole process.
+
+JS
+
+function currentTime() {
+  var t = setTimeout(function(){ currentTime() }, 1000); /* setting timer */
+}
+
+currentTime(); /* calling currentTime() function to initiate the process */
+So congratulations, you have just created a digital clock.
+
+# Digital Clock in 12-Hour format
+
+The HTML and CSS for 12-hour format will remain the same as in the previous case.
+
+The Structure
+Create a div to display time as done for the previous clock.
+
+HTML
+
+<div id="clock"></div>
+The Styling
+Style the clock in the same way as done for the previous clock.
+
+CSS
+
+/* Google font */
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+body {
+  background-color: #121212;
+}
+
+#clock {
+  font-family: 'Orbitron', sans-serif;
+  color: #66ff99;
+  font-size: 56px;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+The Scrypting
+The JavaScript code will have some extra lines in addition to the code created for the previous clock. The code for the digital clock in 24-hour format is shown below.
+
+JS
+
+function currentTime() {
+  var date = new Date(); /* creating object of Date class */
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+  hour = updateTime(hour);
+  min = updateTime(min);
+  sec = updateTime(sec);
+  document.getElementById("clock").innerText = hour + " : " + min + " : " + sec; /* adding time to the div */
+  var t = setTimeout(function(){ currentTime() }, 1000); /* setting timer */
+}
+
+function updateTime(k) {
+  if (k < 10) {
+    return "0" + k;
+  }
+  else {
+    return k;
+  }
+}
+
+currentTime(); /* calling currentTime() function to initiate the process */
+
+function currentTime() {
+  var midday = "AM";
+  midday = (hour >= 12) ? "PM" : "AM";
+}
+
+
+function currentTime() {
+  hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12): hour);
+}
+
+ 
+
+
     
 <img src="logo.jpg">
 
