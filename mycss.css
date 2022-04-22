@@ -11,3 +11,4 @@ ul {
 hr {
   border-top: 3px solid green;
 }
+tr:hover {background-color: coral;}
