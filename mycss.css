@@ -11,4 +11,10 @@ ul {
 hr {
   border-top: 3px solid green;
 }
+{
+  table, th, td 
+  border: 1px solid; 
+  width: 100%;
+    color: white;
+    }
 
