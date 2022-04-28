@@ -12,15 +12,7 @@ hr {
   border-top: 3px solid green;
 }
 
-  table {
-  border: 1px solid; 
-
-   width: 100%;
- 
-}
-
-
-  th, td {
+ th, td {
  border: 1px solid;
  border-color:green
 }
