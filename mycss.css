@@ -27,5 +27,6 @@ hr {
 }
 
   th, td {
-
+ border: 1px solid;
+ border-color:green
 }
