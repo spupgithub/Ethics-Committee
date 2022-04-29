@@ -1,38 +1,141 @@
    
-      <!doctype html >
-<!--[if IE 8]>    <html class="ie8" lang="en"> <![endif]-->
-<!--[if IE 9]>    <html class="ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
+     <!DOCTYPE html>
+<html>
 <head>
-  <link rel="stylesheet" href="mycss.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="mycss.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('icon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
 </head>
+ 
 <body>
-    
-<center><h1>Masteral Theses</h1></center>
-    
-    <table align=center  border=1  bordercolor=green width=90%>
-       <tr bgcolor=green>
-           <td align=center><font size=4 color=white>Research Title</font></td>
-           <td align=center><font size=4 color=white>Proponent</td>
-           <td align=center><font size=4 color=white>Type of Research</font></td>
-           <td align=center><font size=4 color=white>Year</font></td>
-           <td align=center><font size=4 color=white>Degree</font></td>
-             </tr>
-        <tr>
-           <td>Information System</td>
-           <td>Jacobe, Bernard</td>
-           <td>Descriptive</td>
-           <td align=center>2022</td>
-            <td align=center>Master of Science in Information Technology</td>
-            </tr>
-               
-    </table>
-   
-    <p>
-     <center><a href="doctoral.html">Dissertations (Doctoral)</a> |  <a href="college.html">Theses (Undergraduate)</a></center>
-    
-    
- </body>
+<h1>Masteral Theses</h1>
+<center><a href="doctoral.html">Dissertations (Doctoral)</a> |  <a href="college.html">Theses (Undergraduate)</a></center><p>
+ 
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Proponent" title="Type in a proponent">
+
+ <table id="myTable">
+  <tr class="header">
+    <th style="width:40%;">Research Title</th>
+    <th style="width:20%;">Proponent</th>
+      <th style="width:20%;">Type of Research</th>
+      <th style="width:10%;">Year</th>
+      <th style="width:10%;">Degree</th>
+  </tr>
+  <tr>
+    <td>Marketing Strategies of Themed Hotels in Yangjiang City: Basis for a Proposed Marketing and Promotion Plan</td>
+    <td>Zhang Qiaoyan</td>
+    <td>xxxxxxxxx</td>
+    <td>June 2021</td>
+    <td>MSHM</td>
+  </tr>
+ 
+  <tr>
+    <td>Human Resource Portfolio Management System with Decision Support System</td>
+    <td>Erwin N. Lardizabal</td>
+    <td>Applied Research</td>
+    <td>January 2021</td>
+    <td>DIT</td>
+  </tr>
+   <tr>
+    <td>Students' Engagement in English and Mathematics Club Activities in Relation to their Academic Performance</td>
+    <td>Shi Haoqing</td>
+    <td>xxxxxxx</td>
+    <td>June 2021</td>
+    <td>MaEd SL</td>
+  </tr>
+  <tr>
+    <td>Development of E-Commerce Website with Analytics</td>
+    <td>Tao Lei</td>
+    <td>xxxxxxx</td>
+    <td>June 2021</td>
+    <td>MIT</td>
+  </tr>
+   <tr>
+    <td>Social Media Addiction Among College Students: Basis for Program Intervention</td>
+    <td>Aleli M. Laggaman</td>
+    <td>xxxxxxx</td>
+    <td>July 2021</td>
+    <td>MA Psych</td>
+  </tr>
+   <tr>
+    <td>Transformational Leadership Practices and Value Formation of the Sisters of St. Paul of Chartres in Thailand</td>
+    <td>Anchulee Intiya, SPC</td>
+    <td>xxxxxxx</td>
+    <td>January 2020</td>
+    <td>MaEd SL</td>
+  </tr>
+   <tr>
+    <td>Records Management and Monitoring System of Cagayan State University, Lallo Campus</td>
+    <td>Vicky B. Agcaoili</td>
+    <td>xxxxxxx</td>
+    <td>January 2020</td>
+    <td>MIT</td>
+  </tr>
+   <tr>
+    <td>Implementation of the MTB-MLE Approach and the Reading Level of the Grade 3 Pupils of Iguig District</td>
+    <td>Ronalyn A. Rances</td>
+    <td>xxxxxxx</td>
+    <td>June 2020</td>
+    <td>MaEd SL</td>
+  </tr>
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+ 
+</body>
 </html>
-   
 
