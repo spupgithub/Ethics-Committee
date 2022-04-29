@@ -49,8 +49,9 @@
 <center><a href="masteral.html">Theses (Masteral)</a> |  <a href="college.html">Theses (Undergraduate)</a></center><p>
  
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Proponent" title="Type in a proponent">
-
-<table id="myTable">
+ <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Type of Research" title="Type in a type of research">
+ 
+ <table id="myTable">
   <tr class="header">
     <th style="width:40%;">Research Title</th>
     <th style="width:20%;">Proponent</th>
@@ -126,6 +127,27 @@ function myFunction() {
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+ 
+ <script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
