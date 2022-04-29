@@ -46,6 +46,8 @@
 
 <h1>Doctoral Dissertations</h1>
 
+<center><a href="masteral.html">Theses (Masteral)</a> |  <a href="college.html">Theses (Undergraduate)</a></center>
+ 
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Degree" title="Type in a degree">
 
 <table id="myTable">
@@ -123,7 +125,7 @@ function myFunction() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[4];
+    td = tr[i].getElementsByTagName("td")[2];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
