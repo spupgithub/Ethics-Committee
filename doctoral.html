@@ -88,7 +88,14 @@
           .flatten()
           .each(function (resID) {
  
-           
+            // Create the select list in the
+            // header column header
+            // On change of the list values,
+            // perform search operation
+            var mySelectList = $("<select />")
+              .appendTo(myTable.column(resID).header())
+              .on("change", function () {
+                myTable.column(resID).search($(this).val());
          
  
                 // update the changes using draw() method
