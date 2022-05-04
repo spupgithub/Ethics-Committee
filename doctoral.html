@@ -1,125 +1,141 @@
 <!DOCTYPE html>
 <html>
- 
 <head>
-  <meta content="initial-scale=1,
-         maximum-scale=1, user-scalable=0" name="viewport" />
-  <meta name="viewport" content="width=device-width" />
- <link rel="stylesheet" href="mycss.css">
-  <!--Datatable plugin CSS file -->
-  <link rel="stylesheet" href=
-"https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
-  <!--jQuery library file -->
-  <script type="text/javascript" src=
-    "https://code.jquery.com/jquery-3.5.1.js">
-  </script>
-   
-  <!--Datatable plugin JS library file -->
-  <script type="text/javascript" src=
-"https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
-  </script>
- 
-  <style>
-    td {
-      text-align: center;
-    }
-  </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="mycss.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('icon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
 </head>
  
 <body>
-  <h2>
-    Column specific search filter
-    using DataTables plugin
-  </h2>
+<h1>Doctoral Dissertations</h1>
+<center><a href="masteral.html">Theses (Masteral)</a> |  <a href="college.html">Theses (Undergraduate)</a></center><p>
  
-  <!--HTML tables with student data-->
-  <table id="tableID" class="display"
-      style="width: 100%">
-    <thead>
-      <tr>
-        <th>Research Title</th>
-        <th>Proponent</th>
-        <th>Type of Research</th>
-        <th>Year</th>
-        <th>Degree</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>CCoFFA: Financial Analytics for Credit Cooperative</td>
-        <td>Winston G. Domingo</td>
-        <td>Applied Research</td>
-        <td>January 2021</td>
-        <td>DIT</td>
-      </tr>
-      <tr>
-        <td>Human Resource Portfolio Management System with Decision Support System</td>
-        <td>Erwin N. Lardizabal</td>
-        <td>xxxxxx</td>
-        <td>January 2020</td>
-        <td>DPA</td>
-      </tr>
-     
-          
-        
-     
-    </tbody>
-  </table>
-  <br />
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Proponent" title="Type in a proponent">
+
+ <table id="myTable">
+  <tr class="header">
+    <th style="width:40%;">Research Title</th>
+    <th style="width:20%;">Proponent</th>
+      <th style="width:20%;">Type of Research</th>
+      <th style="width:10%;">Year</th>
+      <th style="width:10%;">Degree</th>
+  </tr>
+  <tr>
+    <td>CCoFFA: Financial Analytics for Credit Cooperative</td>
+    <td>Winston G. Domingo</td>
+    <td>Applied Research</td>
+    <td>January 2021</td>
+    <td>DIT</td>
+  </tr>
  
-  <script>
+  <tr>
+    <td>Human Resource Portfolio Management System with Decision Support System</td>
+    <td>Erwin N. Lardizabal</td>
+    <td>Applied Research</td>
+    <td>January 2021</td>
+    <td>DIT</td>
+  </tr>
+   <tr>
+    <td>Development and Evaluation of an Integrated Reading Comprehension Program SY 2019-2020</td>
+    <td>Ciza Rhea A. Osotelo</td>
+    <td>xxxxxxx</td>
+    <td>January 2021</td>
+    <td>PhD RL</td>
+  </tr>
+  <tr>
+    <td>Conversational Interaction in English as a Foreign Language (EFL) Classes</td>
+    <td>Zheng Weizheng</td>
+    <td>xxxxxxx</td>
+    <td>January 2021</td>
+    <td>PhD RL</td>
+  </tr>
+   <tr>
+    <td>Omani Students' Communication Strategies: Basis for a Proposed Communication Enhancement Training Program</td>
+    <td>Aldrin L. Apolonio</td>
+    <td>xxxxxxx</td>
+    <td>January 2021</td>
+    <td>PhD RL</td>
+  </tr>
+   <tr>
+    <td>Morpho-Syntactic Analysis of Gay Lingo in Quirino State University</td>
+    <td>Analyn D. Almoite</td>
+    <td>xxxxxxx</td>
+    <td>January 2021</td>
+    <td>PhD RL</td>
+  </tr>
+   <tr>
+    <td>Implementation of Gender and Development (GAD) Activities at Quirino State University: Basis of Unified GAD Program</td>
+    <td>Emma D. Aspiras</td>
+    <td>xxxxxxx</td>
+    <td>January 2021</td>
+    <td>PhD EM</td>
+  </tr>
+   <tr>
+    <td>Safety and Health Practices on Disaster Risk Reduction and Management: Cagayano's Resiliency During Typhoons and Floods</td>
+    <td>Ma. Flordeliza U. Donato</td>
+    <td>xxxxxxx</td>
+    <td>January 2021</td>
+    <td>PhD NS</td>
+  </tr>
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
  
-      /* Initialization of datatables */
-      $(document).ready(function () {
- 
-        // Paging and other information are
-        // disabled if required, set to true
-        var myTable = $("#tableID").DataTable({
-          paging: false,
-          searching: true,
-          info: false,
-        });
- 
-        // 2d array is converted to 1D array
-        // structure the actions are
-        // implemented on EACH column
-        myTable
-          .columns()
-          .flatten()
-          .each(function (resID) {
- 
-            // Create the select list in the
-            // header column header
-            // On change of the list values,
-            // perform search operation
-            var mySelectList = $("<select />")
-              .appendTo(myTable.column(resID).header())
-              .on("change", function () {
-                myTable.column(resID).search($(this).val());
-         
- 
-                // update the changes using draw() method
-                myTable.column(resID).draw();
-              });
- 
-            // Get the search cached data for the
-            // first column add to the select list
-            // using append() method
-            // sort the data to display to user
-            // all steps are done for EACH column
-            myTable
-              .column(resID)
-              .cache("search")
-              .sort()
-              .each(function (param) {
-                mySelectList.append(
-                  $('<option value="' + param + '">'
-                    + param + "</option>")
-                );
-              });
-          });
-      });
-  </script>
 </body>
- 
 </html>
+
+
