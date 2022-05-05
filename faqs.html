@@ -4,10 +4,216 @@
 <!--[if gt IE 8]><!--> <html lang="en" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
 <head>
   <link rel="stylesheet" href="mycss.css">
-</head>
-<body>
-    <center><h1>Frequently Asked Questions (FAQs)</h1></center>  
+  :root {
+  /*========== Colors ==========*/
+  --hue-color: 225;
+  --first-color: hsl(var(--hue-color), 48%, 35%);
+  --title-color: hsl(var(--hue-color), 48%, 22%);
+  --text-color: hsl(var(--hue-color), 12%, 35%);
+  --body-color: hsl(var(--hue-color), 49%, 98%);
+  --container-color: #FFF;
+  /*========== Font and typography ==========*/
+  --body-font: 'Poppins', sans-serif;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+}
+.accordion {
+  display: grid;
+  align-content: center;
+  height: 100vh;
+}
+.accordion__container {
+  display: grid;
+  row-gap: .75rem;
+  padding: 2rem 1rem;
+  background-color: var(--container-color);
+  border-radius: .5rem;
+  box-shadow: 0 12px 32px rgba(51, 51, 51, 0.1);
+}
+.accordion__title {
+  font-size: var(--small-font-size);
+  color: var(--title-color);
+  font-weight: 400;
+  margin-top: .15rem;
+  transition: .2s;
+}
+.accordion__header {
+  display: flex;
+  column-gap: .5rem;
+  padding: 1.25rem 1.25rem 1.25rem 1rem;
+  cursor: pointer;
+}
+.accordion__description {
+  padding: 0 1.25rem 1.25rem 3rem;
+  font-size: var(--smaller-font-size);
+}
+.accordion__icon {
+  font-size: 1.5rem;
+  height: max-content;
+  color: var(--title-color);
+  transition: .3s;
+}
+.accordion__item {
+  box-shadow: 0 2px 6px rgba(38, 38, 38, 0.1);
+  background-color: var(--container-color);
+  border-radius: .25rem;
+  position: relative;
+  transition: all .25s ease;
+}
+.accordion__item::after {
+  content: '';
+  background-color: var(--first-color);
+  width: 5px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: .25rem 0 0 .25rem;
+}
+.accordion__item:nth-child(1) {
+  background-color: #fff7f0;
+}
+.accordion__item:nth-child(1)::after {
+  background-color: #ffc08a;
+}
+.accordion__item:nth-child(2) {
+  background-color: #f0f0ff;
+}
+.accordion__item:nth-child(2)::after {
+  background-color: #8a8aff;
+}
+.accordion__item:nth-child(3) {
+  background-color: #fff0f3;
+}
+.accordion__item:nth-child(3)::after {
+  background-color: #ff8aa1;
+}
+.accordion__item:nth-child(4) {
+  background-color: #f0faff;
+}
+.accordion__item:nth-child(4)::after {
+  background-color: #8ad8ff;
+}
+.accordion__content {
+  overflow: hidden;
+  height: 0;
+  transition: all .25s ease;
+}
+/*Rotate icon and add font weight to titles*/
+.accordion-open .accordion__icon {
+  transform: rotate(45deg);
+}
+.accordion-open .accordion__title {
+  font-weight: 600;
+}
+  
+  /*=============== MEDIA QUERIES ===============*/
+/* For medium devices */
+@media screen and (min-width: 576px) {
+  .accordion__container {
+    width: 550px;
+    padding: 2.5rem;
+    justify-self: center;
+    border-radius: .75rem;
+  }
+  .accordion__header {
+    padding: 1.5rem;
+  }
+  .accordion__title {
+    padding-right: 3.5rem;
+  }
+  .accordion__description {
+    padding: 0 4rem 1.25rem 3.5rem;
+  }
+}
+/* For large devices */
+@media screen and (min-width: 968px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
+const accordionItems = document.querySelectorAll('.accordion__item')
+accordionItems.forEach((item) =>{
+  const accordionHeader = item.querySelector('.accordion__header')
+  accordionHeader.addEventListener('click', () =>{
+      const openItem = document.querySelector('.accordion-open')
+      toggleItem(item)
+      if(openItem && openItem!== item){
+          toggleItem(openItem)
+      }
+  })
+})
+const toggleItem = (item) =>{
+  const accordionContent = item.querySelector('.accordion__content')
+  if(item.classList.contains('accordion-open')){
+      accordionContent.removeAttribute('style')
+      item.classList.remove('accordion-open')
+  }else{
+      accordionContent.style.height = accordionContent.scrollHeight + 'px'
+      item.classList.add('accordion-open')
+  }
+}
+
+</head>
+  
+<body>
+  
+    <center><h1>Frequently Asked Questions (FAQs)</h1></center>  
+<section class="accordion container">
+  <div class="accordion__container">
+    <div class="accordion__item">
+      <header class="accordion__header">
+        <i class="bx bx-plus accordion__icon"></i>
+        <h3 class="accordion__title">What"s an accordion?</h3>
+      </header>
+      <div class="accordion__content">
+        <p class="accordion__description">
+          An accordion always contains the category title, an expanded and a collapsed state, 
+          an icon indicating expansion, and the spacing between them.
+        </p>
+      </div>
+    </div>
+    <div class="accordion__item">
+      <header class="accordion__header">
+        <i class="bx bx-plus accordion__icon"></i>
+        <h3 class="accordion__title">When and how should it be used?</h3>
+      </header>
+      <div class="accordion__content">
+        <p class="accordion__description">
+          It should be used when users only need a few key concepts or descriptions 
+          of the content on a single page.
+        </p>
+      </div>
+    </div>
+    <div class="accordion__item">
+      <header class="accordion__header">
+        <i class="bx bx-plus accordion__icon"></i>
+        <h3 class="accordion__title">What happens if the user clicks on a collapsed card while another card is open?</h3>
+      </header>
+      <div class="accordion__content">
+        <p class="accordion__description">
+          It happens that the open card was closed, to give way to the information of the next 
+          open card, but there are different designs that prefer it the other way around.
+        </p>
+      </div>
+    </div>
+    <div class="accordion__item">
+      <header class="accordion__header">
+        <i class="bx bx-plus accordion__icon"></i>
+        <h3 class="accordion__title">How to choose an icon to indicate expansion?</h3>
+      </header>
+      <div class="accordion__content">
+        <p class="accordion__description">
+          You must choose a different icon to open and close, so that the user 
+          understands what action he took.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
 </body>
     </html>
